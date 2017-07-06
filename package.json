@@ -1,0 +1,22 @@
+{
+  "name": "portal_noticias",
+  "version": "1.0.0",
+  "description": "site de noticias",
+  "main": "noticias.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raffathamires/UdemyNodeJS.git"
+  },
+  "author": "Raffaela Monteiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raffathamires/UdemyNodeJS/issues"
+  },
+  "homepage": "https://github.com/raffathamires/UdemyNodeJS#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
