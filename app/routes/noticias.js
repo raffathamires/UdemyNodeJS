@@ -1,7 +1,13 @@
+var dbConnection = require('../../config/dbConnection');
+
 module.exports = function(app){
 
-    app.get('/noticias', function(req, res){
-        res.render("noticias/noticias");
-    });
+    var connection = dbConnection();
 
+    app.get('/noticias', function(req, res){  
+        connection.query('select * from noticias', function(erro, result){
+               res.render("noticias/noticias", {noticias: result});
+        });
+
+    });
 };
