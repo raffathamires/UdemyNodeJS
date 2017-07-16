@@ -7,6 +7,9 @@ var consign = require('consign');
 //utilizando body-parser
 var bodyParser = require('body-parser')
 
+//utilizando express-validator
+var expressValidator = require('express-validator');
+
 //chamada do express
 var app = express();
 
@@ -15,6 +18,9 @@ app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
 app.use(bodyParser.urlencoded({extended : true}));
+
+//inclusao do expressvalidator
+app.use(expressValidator());
 
 consign()
     .include('./app/routes')
