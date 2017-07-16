@@ -9,12 +9,13 @@ module.exports.noticias_salvar = function(application, req, res){
     req.assert('resumo','Resumo é obrigatório.').notEmpty();
     req.assert('resumo','Título deve conter entre 10 e 100 caracteres').len(10, 100);
     req.assert('autor','Autor é obrigatório.').notEmpty();
-    req.assert('data_noticia','Data é obrigatório.').notEmpty().isDate({format: 'YYYY-MM-DD'});
+    req.assert('data_noticia','Data é obrigatório.').notEmpty();
+    req.assert('data_noticia','Formato de data incorreto.').isDate({format: 'YYYY-MM-DD'});
     req.assert('noticia','Noticia é obrigatório.').notEmpty();
 
     var error = req.validationErrors();
 
-    console.log(error);
+    //console.log(error);
 
     if(error){
         res.render("admin/form_add_noticia", {validacao : error, noticia : noticia});
