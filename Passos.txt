@@ -1,0 +1,7 @@
+1) Criar um diretório
+2) Iniciar o NPM (npm init)
+3) Express (npm install express --save)
+4) EJS (npm install ejs --save)
+5) Consign (npm install consign --save)
+6) Body-parser (npm install body-parser --save)
+7) Express validator (npm install express-validator --save)
