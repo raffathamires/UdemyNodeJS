@@ -5,3 +5,6 @@
 5) Consign (npm install consign --save)
 6) Body-parser (npm install body-parser --save)
 7) Express validator (npm install express-validator --save)
+8) Criar estrutura de diretórios
+9) Montar estrutura do servidor
+10) Socket.io (npm install socket.io --save)
