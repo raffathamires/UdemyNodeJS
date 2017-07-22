@@ -58,7 +58,7 @@ db.alunos.update(
 					{multi:true}
 				)
 --------------------------------------------------------------------
-remove ({critério de exclusão}, verdadeiro ou falso (1,0) 
+remove ({critério de exclusão}, verdadeiro ou falso (1,0) 1=only one
 db.alunos.remove(
 					{nome:'Maria'}
 				)
