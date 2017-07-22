@@ -1,0 +1,121 @@
+cmd: mongod --rest
+
+show dbs (mostra os bancos de dados)
+use ~~database~~ (utilizar a ~~database~~)
+db.alunos.save({Nome: "Raffaela"})
+db.dropDatabase();
+--------------------------------------------------------------------
+Collections:
+db.createCollection("alunos")
+db.getCollectionNames()
+db.cursos.drop()
+db.alunos.save( {nome: 'Fernanda', idade: 32, sexo: 'F', matrícula: 'hjk456', cursos_interesse: [ {curso: 'Curso Completo do Desenvolvedor NodeJS' }, {curso: 'Curso Completo de Desenvolvimento Web - Crie 6 projetos'} ] } )
+--------------------------------------------------------------------
+db.alunos.findOne();
+db.alunos.find().pretty();
+db.alunos.find({nome: {$eq:"José"}}).pretty(); (igual)
+db.alunos.find({idade: {$lt:30}}).pretty(); (menor que)
+db.alunos.find({idade: {$lte:30}}).pretty(); (menor ou igual a)
+db.alunos.find({idade: {$gt:30}}).pretty(); (maior que)
+db.alunos.find({idade: {$gte:30}}).pretty(); (maior ou igual a)
+db.alunos.find({sexo: {$ne:'M'}}).pretty(); (diferente de)
+db.alunos.find({
+				sexo: {$eq:'F'},
+				idade: {$gt:20}
+				}).pretty();
+db.alunos.find({
+				$or:[
+				{nome: {$eq:'Maria'}},
+				{nome: {$eq:'José'}}
+				]
+				}).pretty();
+--------------------------------------------------------------------	
+update({parametros para atualizacao},{$set},{multi:false}) multi:false ou sem declarar, vai atualizar o primeiro documento que encontrar que atinja a condição do primeiro parâmetro.
+where - set - all(true) only one (false)
+
+save(
+		_id: xxxxx
+	) update ou inclusão (caso não exista)
+
+db.alunos.update(
+					{nome:'José'},
+					{$set:
+						{nome:'João'}
+					}
+				)
+db.alunos.update(
+					{sexo:'F'},
+					{$set:
+						{sexo:'Feminino'}
+					},
+					{multi:true}
+				)
+db.alunos.update(
+					{sexo:'F'},
+					{$set:
+						{sexo:'Feminino',idade:28}
+					},
+					{multi:true}
+				)
+--------------------------------------------------------------------
+remove ({critério de exclusão}, verdadeiro ou falso (1,0) 
+db.alunos.remove(
+					{nome:'Maria'}
+				)
+db.alunos.remove(
+					{idade:{$gt:30}}
+				)
+db.alunos.remove(
+					{matricula:{$eq:'abcd123'}}
+				)
+--------------------------------------------------------------------
+Exercício:
+db.livros.save(
+				{título: 'Introdução a linguagem de marcação HTML', valor: 25.00, Autor: 'João'}
+				)
+db.livros.save(
+				{título: 'NodeJS do básico ao avançado', valor: 280, Autor: 'Jorge'}
+				)
+db.livros.save(
+				{título: 'Android - criando apps reais', valor: 290, Autor: 'Jamilton'}
+				)
+db.livros.save(
+				{título: 'PHP e MySQL', valor: 190, Autor: 'Fernando'}
+				)
+db.livros.save(
+				{título: 'Lógica de Programação', valor: 20, Autor: 'Maria'}
+				)
+db.livros.find({valor: {$gt:200}}).pretty();
+db.livros.find({
+				valor: {$gt:20},
+				valor: {$lt:30}
+				}).pretty();
+db.livros.find({Autor: {$ne:'Fernando'}}).pretty();
+db.livros.update(
+					{título:'PHP e MySQL'},
+					{$set:
+						{valor:175}
+					}
+				)
+db.livros.update(
+					{Autor:'Jorge'},
+					{$set:
+						{título:'Curso Completo de NodeJS'}
+					}
+				)
+db.livros.update(
+					{valor:{$lte:25}},
+					{$set:
+						{valor:27}
+					},
+					{multi:true}
+				)
+db.livros.remove(
+					{Autor:'João'}
+				)
+db.livros.remove(
+					{valor:{$gt:280}}
+				)
+db.livros.remove(
+					{valor:{$lt:30}}
+				)
